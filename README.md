@@ -64,6 +64,17 @@ Generate application key, ketikkan perintah berikut
 $ php artisan key:generate
 ```
 
+### Application Namespace
+Application namespace ini berfungsi sebagai namesapce application, hmm ribet kedengarannya yahh???
+
+Langsung saja coba sendiri ketikkan perintah pada terminal
+
+```
+$ php artisan app:name MyApps  
+```
+
+Al hasil semua namespace yang secara default adalah ```App``` akan berubah menjadi ```MyApps```.
+
 ### Beberapa configurasi yang perlu dilakukan
 Buat database baru, dan isi konfiguarsi di file ```.env```
 
@@ -187,7 +198,7 @@ Repository.php
 Paginable.php
 Searchable.php
 ```
-Yang nanti interface tersbut yang akan diinject ke ```Controller```.
+Yang nanti interface tersebut yang akan diinject ke ```Controller```.
 
 # Service Provider/Service Container
 Folder ini secara default disediakan oleh framework, fungsinya sebagai container. Ituloh dia yang daftarin ```interface``` dan repository agar 
