@@ -1,6 +1,22 @@
 # Belajar CRUD dengan Laravel 5
 
-## Yang perlu dipersiapkan
+# Daftar isi
+* [Persiapan](#yang-perlu-dipersiapkan)
+* [Installasi](#installasi)
+* [Konfigurasi](#konfigurasi)
+* [Migration](#migration)
+* [Seeder](#seeder)
+* [Repositories](#repositories)
+* [Interface](#interface)
+* [Repository](#repository)
+* [Service Provider](#service-provider)
+* [Form Request](#form-request)
+* [Controller](#controller)
+* [Routing](#routing)
+* [Views](#views)
+* [Kontributor](#kontributor)
+
+# Yang perlu dipersiapkan
 - PHP, disarankan :
     - PHP >= 5.5.9
     - OpenSSL PHP Extension
@@ -20,7 +36,7 @@
 - [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop), chrome extention
 - [Git](https://git-scm.com/)
 
-## Instalasi
+# Instalasi
 ### Melalui composer create-project
 Ketikkan pada terminal/command prompt
 
@@ -33,6 +49,8 @@ Clone repository ini
 ```
 git clone https://github.com/cyberid41/belajar-crud-laravel-5.git
 ```
+
+# Konfigurasi
 ### Directory Permissions
 ```
 storage/
@@ -73,7 +91,7 @@ MAIL_PASSWORD=null
 MAIL_ENCRYPTION=null
 ```
 
-### Buat table migrasi baru
+# Migration
 
 Buat 1 file migration, 1 migration mewakili 1 table
  
@@ -87,7 +105,7 @@ $ php artisan make:migration create_user_table
 $ php artisan migrate 
 ```
 
-### Buat seeder atau dummy data
+# Seeder
  
 ```
 $ php artisan make:seeder UserTableSeeder
@@ -149,3 +167,12 @@ Buka file ```database/factories/ModelFactory.php``` definisikan class yang akan 
  realText($maxNbChars = 200, $indexSize = 2)
 ```
 
+# Repositories
+# Interface
+# Repository
+# Service Provider
+# Form Request
+# Controller
+# Routing
+# Views
+# kontributor
