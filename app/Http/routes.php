@@ -15,4 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('user', 'User\UserController');
+Route::group(['namespace' => 'User', 'prefix' => 'api/v1'], function () {
+    Route::resource('user', 'UserController');
+});

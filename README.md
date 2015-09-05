@@ -266,9 +266,7 @@ Jika kita ketikkan perintah
 $ php artisan route:list
 ```
 
-Maka akan tampil route yang didaftarkan lengkap dengan named route, method yang dibolehkan dan controllernya
-
-#### Actions Handled By Resource Controller
+Maka akan tampil route yang didaftarkan lengkap dengan named route, method yang dibolehkan dan controllernya:
 
 Domain    |Method    | Uri              | Action                                              | Route Name
 ----------|----------|------------------|-----------------------------------------------------|-------------
@@ -281,5 +279,34 @@ Domain    |Method    | Uri              | Action                                
           |DELETE    | user/{user}      | App\Http\Controllers\User\UserController@destroy    | user.destroy
 
 # Routing
+Routing ini perannya penting sekali, setiap url yang akan diakses harus didaftarkan dahulu di ```routes.php```, beberapa 
+perintah/ artisan command yang berhubungan dengan route :
+
+```
+// melihat daftar routes yang telah didaftarkan
+$ php artisan route:list
+
+// create route cache file, agar lebih cepat diakses
+$ php artisan route:cache
+
+// clear route cache file
+$ php artisan route:clear
+```
+
+Berikut saya daftarkan route untuk aplikasi ini:
+
+```php
+Route::group(['namespace' => 'User', 'prefix' => 'api/v1'], function () {
+
+    Route::resource('user', 'UserController');
+    
+});
+```
+
+Penjelasannya, route tersebut saya group untuk memudahkan dalam pengaturan/managemen route yang semisal atau 1 folder/namesapce
+```
+namesapce = folder/namespace
+prefix = prefix route untuk mengelompokkan dalam hal pengaksesan api/v1, api/v2
+```
 # Views
 # kontributor
