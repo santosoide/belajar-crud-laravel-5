@@ -122,6 +122,14 @@ $ php artisan migrate
 $ php artisan make:seeder UserTableSeeder
 ```
 
+Jangan lupa daftarin class seedernya di ```database\seeds\DatabaseSeeder.php```
+
+Kalau sudah selesai run seeder
+
+```
+$ php artisan db:seeder
+```
+
 ### Menggunakan ModelFactory untuk mengisi dummy data
 
 Buka file ```database/factories/ModelFactory.php``` definisikan class yang akan diisi dummy data menggunakan FakerGenerator, generator ini menyediakan dummy data berkualitas berikut beberapa data yang bisa kita generate menggunakan FakerGenerator
@@ -225,7 +233,53 @@ Pada project ini saya menggunakan ```Contextual Binding```, berikut cara mendaft
 Dengan demikian pada ```UserController``` nanti bisa diinject ```Crudable``` dan mengarah pada ```UserRepository```
 
 # Form Request
+Form Request ini biasanya difungsikan untuk menangkap request dari url atau parameter yang dikirim melalui http method 
+(POST,GET,PUT,Patch,Delete). Dan juga biasa difungsikan sebagai Form Validation Request, nanti penggunannya langsung inject
+ method di ```Controller```.
+
+Cara membuat form request dengan perintah :
+
+```
+$ php artisan make:request User\\UserCreateFormRequest
+```
+
+Hasil generate di dalam folder ```app/Http/Requests/User```, tanda '\\' akan otomatis membuat folder baru, ini berlaku 
+untuk semua perintah ```make``` di ```artisan command```. 
+
 # Controller
+Controller bisanya untuk membuat aplikasi CRUD menggunakan resource controller, berikut perintahnya :
+
+```
+$ php artisan make:controller User\\UserController
+```
+
+Secara otomatis akan generate beberapa method yang umum digunakan seperti, kemudian difile ```routes.php``` kita tambahkan 
+ code sebagai berikut :
+
+```php
+Route::resource('user', 'User\UserController');
+```
+
+Jika kita ketikkan perintah
+
+```
+$ php artisan route:list
+```
+
+Maka akan tampil route yang didaftarkan lengkap dengan named route, method yang dibolehkan dan controllernya
+
+#### Actions Handled By Resource Controller
+
+Domain    |Method    | Uri              | Action                                              | Route Name
+----------|----------|------------------|-----------------------------------------------------|-------------
+          |GET       | /                | App\Http\Controllers\User\UserController@index      | user.index
+          |GET       | user/create      | App\Http\Controllers\User\UserController@create     | user.create
+          |POST      | user             | App\Http\Controllers\User\UserController@store      | user.store
+          |GET       | user/{user}      | App\Http\Controllers\User\UserController@show       | user.show
+          |GET       | user/{user}/edit | App\Http\Controllers\User\UserController@edit       | user.edit
+          |PUT/PATCH | user/{user}      | App\Http\Controllers\User\UserController@update     | user.update
+          |DELETE    | user/{user}      | App\Http\Controllers\User\UserController@destroy    | user.destroy
+
 # Routing
 # Views
 # kontributor
