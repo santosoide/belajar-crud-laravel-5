@@ -6,7 +6,7 @@
 * [Konfigurasi](#konfigurasi)
 * [Migration](#migration)
 * [Seeder](#seeder)
-* [Repositories](#repositories)
+* [Model](#model)
 * [Interface](#interface)
 * [Repository](#repository)
 * [Service Provider](#service-provider)
@@ -167,10 +167,52 @@ Buka file ```database/factories/ModelFactory.php``` definisikan class yang akan 
  realText($maxNbChars = 200, $indexSize = 2)
 ```
 
-# Repositories
-# Interface
+# Model
+Model boleh ditaruh dimana saja secara default model ditaruh dibawah foldr ```app/``` namun dalam contoh modelkita taruh pada folder ```Entities```
+
 # Repository
-# Service Provider
+Repositories ini adalah sebuah folder yang berfungsi untuk menampung semua logika Query baik itu database atau cache, 
+kita membuat folder ini sendiri dengan nama ```Repositories```. Saya sudah sediakan satu file yang bernama ```AbstractRepository.php```
+Untuk menangani Query yang bersifat global agar code ini bisa dipakai pada ```Repository``` lainnya.
+ 
+# Interface
+Interface ini adalah penghubung antara ```Controller``` ke ```Repository``` yang akan diinject di Controller pada method 
+```__construct``` atau langsung pada method di Controller. Saya juga telah sediakan 4 ```interface``` yang biasa saya gunakan, 
+Karena kita mengikuti style laravel folder ```Interface``` diganti dengan ```Contracts```    
+yaitu :
+
+```
+Crudable.php
+Repository.php
+Paginable.php
+Searchable.php
+```
+Yang nanti interface tersbut yang akan diinject ke ```Controller```.
+
+# Service Provider/Service Container
+Folder ini secara default disediakan oleh framework, fungsinya sebagai container. Ituloh dia yang daftarin ```interface``` dan repository agar 
+bisa diinject secara realtime di Controlller. Jadi ketika kita membuat interface atau repository agar bisa dipakai harus 
+didaftarkan dahulu di file ```app/Providers/AppServiceProvider.php```
+
+Pada project ini saya menggunakan ```Contextual Binding```, berikut cara mendaftarkannya:
+
+```php
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        // mendaftarkan user crudable
+        $this->app->when('App\Http\Controllers\Admin\UserController')
+             ->needs('App\Contracts\Crudable')
+             ->give('App\Domain\Repositories\Admin\UserRepository');
+    }
+```
+
+Dengan demikian pada ```UserController``` nanti bisa diinject ```Crudable``` dan mengarah pada ```UserRepository```
+
 # Form Request
 # Controller
 # Routing
