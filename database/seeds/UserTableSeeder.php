@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class UsersSeeder extends Seeder
+class UserTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +15,6 @@ class UsersSeeder extends Seeder
         DB::table('users')->truncate();
 
         // generate dummy data with 100 records using Faker
-        factory('App\User', 100)->create();
+        factory('App\Entities\User', 100)->create();
     }
 }
