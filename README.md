@@ -31,7 +31,7 @@ composer create-project laravel/laravel FolderApp --prefer-dist
 Clone repository ini
 
 ```
-git clone https://github.com/cyberid41/crud-laravel-5.git
+git clone https://github.com/cyberid41/belajar-crud-laravel-5.git
 ```
 ### Directory Permissions
 ```
@@ -47,10 +47,11 @@ $ php artisan key:generate
 ```
 
 ### Beberapa configurasi yang perlu dilakukan
-
-Buka file ```.env```
+Buat database baru, dan isi konfiguarsi di file ```.env```
 
 ```
+// file .env
+
 APP_ENV=local
 APP_DEBUG=true
 APP_KEY=Xm67S04I78Y3az5NDx8jM9jotsasE6D2
@@ -71,3 +72,80 @@ MAIL_USERNAME=null
 MAIL_PASSWORD=null
 MAIL_ENCRYPTION=null
 ```
+
+### Buat table migrasi baru
+
+Buat 1 file migration, 1 migration mewakili 1 table
+ 
+```
+$ php artisan make:migration create_user_table
+```
+
+### Jalankan migration table agar dieksekusi menjadi table didatabase
+
+```
+$ php artisan migrate 
+```
+
+### Buat seeder atau dummy data
+ 
+```
+$ php artisan make:seeder UserTableSeeder
+```
+
+### Menggunakan ModelFactory untuk mengisi dummy data
+
+Buka file ```database/factories/ModelFactory.php``` definisikan class yang akan diisi dummy data menggunakan FakerGenerator, generator ini menyediakan dummy data berkualitas berikut beberapa data yang bisa kita generate menggunakan FakerGenerator
+
+```
+ string $name
+ string $firstName
+ string $firstNameMale
+ string $firstNameFemale
+ string $lastName
+ string $title
+ string $titleMale
+ string $titleFemale
+ string $citySuffix
+ string $streetSuffix
+ string $buildingNumber
+ string $city
+ string $streetName
+ string $streetAddress
+ string $postcode
+ string $address
+ string $country
+ float  $latitude
+ float  $longitude
+ string $ean13
+ string $ean8
+ string $isbn13
+ string $isbn10
+ string $phoneNumber
+ string $company
+ string $companySuffix
+ string $creditCardType
+ string $creditCardNumber
+ string creditCardNumber($type = null, $formatted = false, $separator = '-')
+ \DateTime $creditCardExpirationDate
+ string $creditCardExpirationDateString
+ string $creditCardDetails
+ string $bankAccountNumber
+ string $swiftBicNumber
+ string $vat
+ string $word
+ string|array $words
+ string|array words($nb = 3, $asText = false)
+ string $sentence
+ string sentence($nbWords = 6, $variableNbWords = true)
+ string|array $sentences
+ string|array sentences($nb = 3, $asText = false)
+ string $paragraph
+ string paragraph($nbSentences = 3, $variableNbSentences = true)
+ string|array $paragraphs
+ string|array paragraphs($nb = 3, $asText = false)
+ string $text
+ string text($maxNbChars = 200)
+ realText($maxNbChars = 200, $indexSize = 2)
+```
+
