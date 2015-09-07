@@ -308,5 +308,21 @@ Penjelasannya, route tersebut saya group untuk memudahkan dalam pengaturan/manag
 namesapce = folder/namespace
 prefix = prefix route untuk mengelompokkan dalam hal pengaksesan api/v1, api/v2
 ```
-# Views
+# Testing dengan Rest client (Postman)
+Jika akan test endpoint url harus menyertakan header, hal ini juga berlaku ketika kita request Http Method (POST,PUT,PATCH,GET,DELETE)
+menggunakan Ajax, berikut headernya :
+
+```
+X-Requested-With : XMLHttpRequest
+```
+ 
 # kontributor
+Edi Santoso
+
+(email)[mailto:edicyber@gmail.com]
+
+(@cyberid41)[https://github.com/cyberid41]
+
+(facebook)[https://facebook.com/cyberid41]
+
+(linkedin)[https://id.linkedin.com/in/cyberid41]
