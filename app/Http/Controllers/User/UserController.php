@@ -59,16 +59,6 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function create()
-    {
-        return view('user.user-create');
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param UserCreateRequest $request
@@ -93,21 +83,9 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\View\View
-     */
-    public function edit($id)
-    {
-        return view('user.user-edit');
-    }
-
-    /**
      * Update the specified resource in storage.
      *
-     * @param UserEditRequest $request
+     * @param UserEditRequest   $request
      * @param                   $id
      *
      * @return mixed

@@ -16,5 +16,5 @@ Route::get('/', function () {
 });
 
 Route::group(['namespace' => 'User', 'prefix' => 'api/v1'], function () {
-    Route::resource('user', 'UserController');
+    Route::resource('user', 'UserController', ['except' => ['create', 'edit']]);
 });
