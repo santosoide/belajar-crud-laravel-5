@@ -13,7 +13,7 @@
 * [Form Request](#form-request)
 * [Controller](#controller)
 * [Routing](#routing)
-* [Views](#views)
+* [Testing dengan Postman](#testing-dengan-rest-client-postman)
 * [Kontributor](#kontributor)
 
 # Yang perlu dipersiapkan
