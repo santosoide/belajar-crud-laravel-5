@@ -95,13 +95,7 @@ abstract class AbstractRepository implements RepositoryContract
      */
     public function create(array $data)
     {
-        $q = $this->model->create($data);
-
-        if (!$q) {
-            return $this->createError();
-        }
-
-        return $this->createSuccess();
+        return $this->model->create($data);
     }
 
     /**
@@ -117,10 +111,10 @@ abstract class AbstractRepository implements RepositoryContract
         $q = $this->find($id)->fill($data)->save();
 
         if (!$q) {
-            return $this->updateError();
+            return 'Tidak berhasil update data';
         }
 
-        return $this->updateSuccess();
+        return 'Berhasil update data';
 
     }
 
@@ -137,11 +131,11 @@ abstract class AbstractRepository implements RepositoryContract
         $q = $this->find($id);
 
         if (!$q) {
-            return $this->deleteError();
+            return 'Gagal Hapus data';
         }
         $q->delete();
 
-        return $this->deleteSuccess();
+        return 'Berhasil Hapus data';
     }
 
     /**

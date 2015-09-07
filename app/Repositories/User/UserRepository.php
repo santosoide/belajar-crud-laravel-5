@@ -89,7 +89,7 @@ class UserRepository extends AbstractRepository implements Crudable, Paginable, 
     public function getByPage($limit = 10, $page = 1, array $column = ['*'], $field, $search = '')
     {
         // query to aql
-        return parent::getByPage($limit, $page, $column, 'akun', $search);
+        return parent::getByPage($limit, $page, $column, 'name', $search);
     }
 
     /**
@@ -101,7 +101,7 @@ class UserRepository extends AbstractRepository implements Crudable, Paginable, 
     public function search($query, $page = 1)
     {
         // query to aql
-        return parent::likeSearch('akun', $query);
+        return parent::likeSearch('name', $query);
     }
 
 }

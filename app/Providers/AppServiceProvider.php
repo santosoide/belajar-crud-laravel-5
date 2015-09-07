@@ -26,17 +26,17 @@ class AppServiceProvider extends ServiceProvider
         // mendaftarkan user crudable
         $this->app->when('App\Http\Controllers\User\UserController')
             ->needs('App\Contracts\Crudable')
-            ->give('App\Domain\Repositories\User\UserRepository');
+            ->give('App\Repositories\User\UserRepository');
 
         // mendaftarkan user paginable
         $this->app->when('App\Http\Controllers\User\UserController')
             ->needs('App\Contracts\Paginable')
-            ->give('App\Domain\Repositories\User\UserRepository');
+            ->give('App\Repositories\User\UserRepository');
 
         // mendaftarkan user searchable
         $this->app->when('App\Http\Controllers\User\UserController')
             ->needs('App\Contracts\Searchable')
-            ->give('App\Domain\Repositories\User\UserRepository');
+            ->give('App\Repositories\User\UserRepository');
 
     }
 }

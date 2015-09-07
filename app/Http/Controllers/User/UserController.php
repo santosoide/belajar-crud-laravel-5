@@ -6,6 +6,7 @@ use App\Contracts\Crudable;
 use App\Contracts\Paginable;
 use App\Contracts\Searchable;
 use App\Http\Requests\User\UserCreateRequest;
+use App\Http\Requests\User\UserEditRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -106,12 +107,12 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param UserCreateRequest $request
+     * @param UserEditRequest $request
      * @param                   $id
      *
      * @return mixed
      */
-    public function update(UserCreateRequest $request, $id)
+    public function update(UserEditRequest $request, $id)
     {
         return $this->crud->update($id, $request->all());
     }
