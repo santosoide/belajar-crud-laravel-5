@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::group(['namespace' => 'User', 'prefix' => 'api/v1'], function () {
     Route::resource('user', 'UserController', ['except' => ['create', 'edit']]);
 });
+
+Route::get('give-me-token', function () {
+    return csrf_token();
+});

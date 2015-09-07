@@ -315,7 +315,9 @@ menggunakan Ajax, berikut headernya :
 ```
 X-Requested-With : XMLHttpRequest
 ```
- 
+
+Jangan lupa untuk menyertakan inputan ```_token``` dibody setiap POST, PUT dan DELETE
+
 # kontributor
 Edi Santoso
 
