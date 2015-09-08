@@ -356,10 +356,10 @@ Jangan lupa untuk menyertakan inputan ```_token``` dibody setiap POST, PUT dan D
 # kontributor
 Edi Santoso
 
-(email)[mailto:edicyber@gmail.com]
+[email]([mailto:edicyber@gmail.com)
 
-(@cyberid41)[https://github.com/cyberid41]
+[@cyberid41](https://github.com/cyberid41)
 
-(facebook)[https://facebook.com/cyberid41]
+[facebook](https://facebook.com/cyberid41)
 
-(linkedin)[https://id.linkedin.com/in/cyberid41]
+[linkedin](https://id.linkedin.com/in/cyberid41)
