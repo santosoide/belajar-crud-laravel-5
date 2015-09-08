@@ -12,6 +12,7 @@
 * [Service Provider](#service-provider)
 * [Form Request](#form-request)
 * [Controller](#controller)
+* [Dependency/Method Injection](#dependency-method-injection)
 * [Routing](#routing)
 * [Testing dengan Postman](#testing-dengan-rest-client-postman)
 * [Kontributor](#kontributor)
@@ -277,6 +278,40 @@ Domain    |Method    | Uri              | Action                                
           |GET       | user/{user}/edit | App\Http\Controllers\User\UserController@edit       | user.edit
           |PUT/PATCH | user/{user}      | App\Http\Controllers\User\UserController@update     | user.update
           |DELETE    | user/{user}      | App\Http\Controllers\User\UserController@destroy    | user.destroy
+
+# Dependency/Method Injection
+Setelah didaftarkan aplikasi di Service Provider, Repository bisa diinject di controller melalui method ```__construct```
+
+```php
+    /**
+     * @var UserRepository
+     */
+    protected $user;
+
+    /**
+     * @param UserRepository $user
+     */
+    public function __construct(UserRepository $user)
+    {
+        $this->user = $user;
+    }
+```
+
+Dan juga method injection contohnya, inject ```UserCreateFormRequest``` ke controller
+
+```php
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param UserCreateRequest $request
+     *
+     * @return mixed
+     */
+    public function store(UserCreateRequest $request)
+    {
+        return $this->user->create($request->all());
+    }
+```
 
 # Routing
 Routing ini perannya penting sekali, setiap url yang akan diakses harus didaftarkan dahulu di ```routes.php```, beberapa 

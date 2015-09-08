@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Contracts\Crudable;
-use App\Contracts\Paginable;
-use App\Contracts\Searchable;
 use App\Http\Requests\User\UserCreateRequest;
 use App\Http\Requests\User\UserEditRequest;
+use App\Repositories\User\UserRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -18,32 +16,16 @@ use App\Http\Controllers\Controller;
 class UserController extends Controller
 {
     /**
-     * @var Crudable
+     * @var UserRepository
      */
-    protected $crud;
+    protected $user;
 
     /**
-     * @var Searchable
+     * @param UserRepository $user
      */
-    protected $search;
-
-    /**
-     * @var Paginable
-     */
-    protected $page;
-
-    /**
-     * Create instance UserController
-     *
-     * @param Crudable   $crud
-     * @param Paginable  $page
-     * @param Searchable $search
-     */
-    public function __construct(Crudable $crud, Paginable $page, Searchable $search)
+    public function __construct(UserRepository $user)
     {
-        $this->crud = $crud;
-        $this->page = $page;
-        $this->search = $search;
+        $this->user = $user;
     }
 
     /**
@@ -55,7 +37,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        return $this->page->getByPage(10, $request->input('page'), $column = ['*'], '', $request->input('search'));
+        return $this->user->getByPage(10, $request->input('page'), $column = ['*'], '', $request->input('search'));
     }
 
     /**
@@ -67,7 +49,7 @@ class UserController extends Controller
      */
     public function store(UserCreateRequest $request)
     {
-        return $this->crud->create($request->all());
+        return $this->user->create($request->all());
     }
 
     /**
@@ -79,7 +61,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return $this->crud->find($id);
+        return $this->user->find($id);
     }
 
     /**
@@ -92,7 +74,7 @@ class UserController extends Controller
      */
     public function update(UserEditRequest $request, $id)
     {
-        return $this->crud->update($id, $request->all());
+        return $this->user->update($id, $request->all());
     }
 
     /**
@@ -104,6 +86,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        return $this->crud->delete($id);
+        return $this->user->delete($id);
     }
 }
