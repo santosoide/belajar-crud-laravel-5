@@ -51,6 +51,12 @@ Clone repository ini
 git clone https://github.com/cyberid41/belajar-crud-laravel-5.git
 ```
 
+Jangan lupa untuk melakukan composer update
+
+```
+composer update
+```
+
 # Konfigurasi
 ### Directory Permissions
 ```
