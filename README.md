@@ -357,7 +357,17 @@ menggunakan Ajax, berikut headernya :
 X-Requested-With : XMLHttpRequest
 ```
 
-Jangan lupa untuk menyertakan inputan ```_token``` dibody setiap POST, PUT dan DELETE
+Jangan lupa untuk menyertakan inputan ```_token``` dibody setiap POST, PUT dan DELETE, jika menggunakan postman untuk mendapatkan 
+```csrf_token``` dengan mendaftarkan pada route:
+
+```
+// get token
+Route::get('give-me-token', function () {
+    return csrf_token();
+});
+```
+
+**NB :** token ini hanya untuk sementara, sebisa mungkin gunakan url yang sulit untuk ditebak.
 
 # kontributor
 Edi Santoso
