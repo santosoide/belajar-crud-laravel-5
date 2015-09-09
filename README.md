@@ -360,7 +360,7 @@ X-Requested-With : XMLHttpRequest
 Jangan lupa untuk menyertakan inputan ```_token``` dibody setiap POST, PUT dan DELETE, jika menggunakan postman untuk mendapatkan 
 ```csrf_token``` dengan mendaftarkan pada route:
 
-```
+```php
 // get token
 Route::get('give-me-token', function () {
     return csrf_token();
