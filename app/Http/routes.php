@@ -22,3 +22,17 @@ Route::group(['namespace' => 'User', 'prefix' => 'api/v1'], function () {
 Route::get('give-me-token', function () {
     return csrf_token();
 });
+
+Route::post('guzzle', function () {
+
+    $client = new \GuzzleHttp\Client();
+    $body = ['akun' => 'Akun Saya', 'kode_rekening' => '02'];
+    $response = $client->post('http://appsim.dev/api/v1/akun', [
+        'form_params' => $body,
+        'headers'     => [
+            'X-Requested-With' => 'XMLHttpRequest'
+        ]
+    ]);
+
+    echo $response->getBody();
+});
