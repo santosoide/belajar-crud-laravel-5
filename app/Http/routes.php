@@ -23,6 +23,8 @@ Route::get('give-me-token', function () {
     return csrf_token();
 });
 
+Route::get('cetak-pdf', 'CetakPdfController@index');
+
 Route::post('guzzle', function () {
 
     $client = new \GuzzleHttp\Client();
